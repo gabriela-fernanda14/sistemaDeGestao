@@ -60,3 +60,8 @@ WHERE c.id_consulta IS NULL;
 INSERT INTO medicos (nome_medico, especialidade_medico) VALUES ('Julia Soares', 'Cardiologista');
 INSERT INTO pacientes  (nome_paciente, email_paciente, telefone_paciente) VALUES ('Ana Julia', 'anajulia@gmail.com', '(11) 98734-6064');
 
+SELECT m.nome_medico, m.especialidade_medico
+FROM medicos m
+LEFT JOIN consultas c
+ON c.id_medico = m.id_medico
+WHERE c.id_consulta IS NULL;

@@ -41,3 +41,22 @@ INSERT INTO consultas (id_paciente, id_medico, data_consulta, motivo_consulta) V
 INSERT INTO consultas (id_paciente, id_medico, data_consulta, motivo_consulta) VALUES (3, 3, '2024-11-03', 'Dores musculares');
 INSERT INTO consultas (id_paciente, id_medico, data_consulta, motivo_consulta) VALUES (5, 5, '2020-02-06', 'Convulsões');
 INSERT INTO consultas (id_paciente, id_medico, data_consulta, motivo_consulta) VALUES (2, 4, '2024-11-08', 'Retirada de pintas');
+
+SELECT p.nome_paciente, m.nome_medico, m.especialidade_medico, c.data_consulta
+FROM consultas c
+JOIN pacientes p
+ON c.id_paciente = p.id_paciente 
+JOIN medicos m 
+ON c.id_medico = m.id_medico
+WHERE data_consulta <= CURRENT_DATE;
+
+
+SELECT p.nome_paciente, p.email_paciente, p.telefone_paciente
+FROM pacientes p
+LEFT JOIN consultas c
+ON c.id_paciente = p.id_paciente
+WHERE c.id_consulta IS NULL;
+
+INSERT INTO medicos (nome_medico, especialidade_medico) VALUES ('Julia Soares', 'Cardiologista');
+INSERT INTO pacientes  (nome_paciente, email_paciente, telefone_paciente) VALUES ('Ana Julia', 'anajulia@gmail.com', '(11) 98734-6064');
+
